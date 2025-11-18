@@ -214,38 +214,44 @@ func (l ZLogger) Warningf(format string, args ...interface{}) {
 
 // String adding string value to log output
 func (l *ZLogger) String(key, value string) Logger {
-	l.Logger = l.Logger.With().Str(key, value).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Str(key, value).Logger(),
+	}
 }
 
 // Int adding int value to log output
 func (l *ZLogger) Int(key string, value int) Logger {
-	l.Logger = l.Logger.With().Int(key, value).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Int(key, value).Logger(),
+	}
 }
 
 // Int64 adding int64 value to log output
 func (l *ZLogger) Int64(key string, value int64) Logger {
-	l.Logger = l.Logger.With().Int64(key, value).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Int64(key, value).Logger(),
+	}
 }
 
 // Interface adding interface value to log output
 func (l *ZLogger) Interface(key string, value interface{}) Logger {
-	l.Logger = l.Logger.With().Interface(key, value).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Interface(key, value).Logger(),
+	}
 }
 
 // Bytes adding bytes value to log output
 func (l *ZLogger) Bytes(key string, value []byte) Logger {
-	l.Logger = l.Logger.With().Bytes(key, value).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Bytes(key, value).Logger(),
+	}
 }
 
 // Fields adding fields map to log output
 func (l *ZLogger) Fields(fields map[string]interface{}) Logger {
-	l.Logger = l.Logger.With().Fields(fields).Logger()
-	return l
+	return &ZLogger{
+		Logger: l.Logger.With().Fields(fields).Logger(),
+	}
 }
 
 // Level set logging level for logger
